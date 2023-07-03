@@ -1,0 +1,44 @@
+Certainly! Here's the continuation of the explanation:
+
+1. The necessary header files (`stdio.h`, `stdbool.h`, `limits.h`) are included.
+
+2. The constant `MAX_VERTICES` is defined to represent the maximum number of vertices in the graph.
+
+3. The function `BFS` is defined, which implements the BFS algorithm to check if the graph is bipartite. It takes the adjacency matrix `G`, the number of vertices `V`, the source vertex `s`, and the `color` array to store the group of each vertex. The function returns a boolean value indicating whether the graph is bipartite.
+
+4. Several arrays and variables are declared within the `BFS` function to support the BFS algorithm. These include the `prev` array to store the previous vertex in the BFS traversal, the `d` array to store the distance from the source vertex, the `queue` array to implement the BFS queue, and `front` and `rear` variables to keep track of the front and rear pointers of the queue.
+
+5. The `prev` and `d` arrays are initialized. All vertices are marked with `-1` in the `prev` array to represent an initial state (NIL), and `INT_MAX` is set for all vertices in the `d` array to represent an infinite distance.
+
+6. The color of the source vertex `s` is set to `0` to represent the first group. The distance `d` of the source vertex is set to `0`, and the previous vertex `prev` is set to `-1` (NIL). The source vertex `s` is enqueued into the `queue`.
+
+7. The main BFS algorithm is implemented using a `while` loop. As long as there are vertices in the queue, the algorithm continues to dequeue a vertex `u` from the front of the queue.
+
+8. For each adjacent vertex `v` of `u`, the code checks if there is an edge between `u` and `v` (`G[u][v] == 1`). If so, it checks if `v` has not been visited (`color[v] == -1`). If `v` is unvisited, it assigns the opposite color of `u` to `v` (`1 - color[u]`), sets the distance `d` of `v` as the distance of `u` plus 1, marks `u` as the previous vertex of `v` in order to reconstruct the path later, and enqueues `v` for further traversal.
+
+9. If the color of vertex `v` is already assigned and it is the same as the color of the parent vertex `u` (`color[v] == color[u]`), it means the graph is not bipartite. In this case, the function returns `false`.
+
+10. If the BFS traversal completes without encountering any conflicts in vertex coloring, the graph is determined to be bipartite, and the function returns `true`.
+
+11. The `main` function is the entry point of the program.
+
+12. The variable `V` is set to `5` to represent the number of vertices in the graph.
+
+13. The adjacency matrix `G` is defined to represent the graph. In this example, a 5x5 matrix is used to represent the edges between vertices.
+
+14. The `color` array is initialized with `-1` to mark all vertices as unvisited.
+
+15. The source vertex is set to `0`.
+
+16. The `BFS` function is called with the graph `G`, the number of vertices `V`, the source vertex `source`, and the `color` array. If the graph is determined to be bipartite, the program prints
+Certainly! Here's the continuation of the explanation:
+
+17. If the graph is determined to be bipartite (the `BFS` function returns `true`), the program prints "It's a bipartite graph!" to indicate that the graph satisfies the bipartite property.
+
+18. The program then proceeds to print the groups of vertices. It iterates over all vertices using a `for` loop and prints the vertex index along with its corresponding group (stored in the `color` array).
+
+19. If the graph is not bipartite (the `BFS` function returns `false`), the program prints "It's not a bipartite graph!" to indicate that the graph does not satisfy the bipartite property.
+
+20. Finally, the `main` function returns `0` to indicate successful program execution.
+
+In summary, this code checks if a given graph is bipartite using the BFS algorithm. It assigns two distinct groups (colors) to the vertices of the graph and ensures that no two adjacent vertices have the same color. If this condition holds true for the entire graph, it is determined to be bipartite.
